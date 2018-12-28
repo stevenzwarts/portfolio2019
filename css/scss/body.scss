@@ -1,0 +1,219 @@
+main{
+    width: 85%;
+	background-color: $white;
+    padding: $container--margin;
+    
+    .sectionwrapper{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    section{
+        border: 1px solid #ececec;
+        margin-bottom: $container--margin;
+        padding: $container--margin;
+        box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.05);
+    }
+
+    .timeline{
+        width: 100%;
+
+        .timelinewrapper{
+            width: 100%;
+            // background-color: #ececec;
+            margin: 0 auto;
+
+            .tl-row{
+                display: flex;
+                justify-content: space-between;
+
+                .tl-field{
+                    height: 40px;
+                    width: calc(100% / 14);
+                    position: relative;
+                    // border: 1px solid #ececec;
+                    // overflow: hidden;
+
+                    .tl-field{
+                        height: 100%;
+                        width: 100%;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        border: 0;
+                    }
+
+                    .tl-ball{
+                        display: block;
+                        position: absolute;
+                        height: 25px;
+                        width: 25px;
+                        top: calc(50% - 12px);
+                        left: 12px;
+                        background-color: $white;
+                        border: 4px solid $color--primary;
+                        border-radius: 50%;
+                        z-index: 99;
+                        line-height: 16px;
+                        text-align: center;
+
+                        &.is-hover{
+                            background-color: $color--secondary;
+                            cursor: pointer;
+                            color: $white;
+                        }
+                    }
+
+                    &.line, &.btm, &.mtt, &.mtb, &.ttm, &.ttb{
+                        &:after, &:before{
+                            content: '';
+                            display: block;
+                            height: 4px;
+                            position: absolute;
+                        }
+                    }
+
+                    &.line{
+                        &:after{
+                            width: 100%;
+                            top: calc(50% - 2px);
+                        }
+                    }
+
+                    &.btm{
+                        &:before{
+                            width: calc(100% - 19px);
+                            top: calc(50% - 2px);
+                            right: 0;
+                        }
+                        &:after{
+                            width: 30px;
+                            bottom: 7px;
+                            left: -6px;
+                            transform: rotate(-45deg);
+                        }
+                    }
+
+                    &.mtt{
+                        &:before{
+                            width: calc(100% - 19px);
+                            top: calc(50% - 2px);
+                            left: 0;
+                        }
+                        &:after{
+                            width: 30px;
+                            top: 7px;
+                            right: -6px;
+                            transform: rotate(-45deg);
+                        }
+                    }
+
+                    &.mtb{
+                        &:before{
+                            width: calc(100% - 19px);
+                            top: calc(50% - 2px);
+                            left: 0;
+                        }
+                        &:after{
+                            width: 30px;
+                            bottom: 7px;
+                            right: -6px;
+                            transform: rotate(45deg);
+                        }
+                    }
+
+                    &.ttm{
+                        &:before{
+                            width: calc(100% - 19px);
+                            top: calc(50% - 2px);
+                            right: 0;
+                        }
+                        &:after{
+                            width: 30px;
+                            top: 7px;
+                            left: -6px;
+                            transform: rotate(45deg);
+                        }
+
+                        &.no-cont{
+                            &:before{
+                                display: none;
+                            }
+                        }
+                    }
+
+                    &.ttb{
+                        &:before{
+                            width: 30px;
+                            bottom: 7px;
+                            right: -6px;
+                            transform: rotate(45deg);
+                        }
+                        &:after{
+                            width: 30px;
+                            top: 7px;
+                            left: -6px;
+                            transform: rotate(45deg);
+                        }
+                    }
+
+                    &.cont{
+                        &:before{
+                            width: 100%;
+                            top: calc(50% - 2px);
+                            left: 0;
+                        }
+                    }
+
+                    &.yellow{
+                        &:before, &:after{
+                            background-color: $color--secondary;
+                        }
+                    }
+
+                    &.blue{
+                        &:before, &:after{
+                            background-color: $color--primary;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .work{
+        width: calc(50% - (#{$container--margin} / 2));
+        height: 600px;
+        border-top: 10px solid $color--primary;
+
+        .work__job{
+
+            &.is-hover{
+                background-color: #ececec;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .edu{
+        width: calc(50% - (#{$container--margin} / 2));
+        border-top: 10px solid $color--secondary;
+    }
+
+    .skills{
+        width: calc(50% - (#{$container--margin} / 2));
+        height: 600px;
+        border-top: 10px solid $color--primary;
+    }
+
+    .brands{
+        width: calc(50% - (#{$container--margin} / 2));
+    }
+
+    .projects{
+        width: 100%;
+        height: 800px;
+        margin-bottom: 0;
+        border-top: 10px solid $color--primary;
+    }
+}

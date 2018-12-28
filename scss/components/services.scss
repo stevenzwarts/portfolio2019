@@ -1,0 +1,138 @@
+$servicescols_dt : auto;     // auto, 1, 2, 3, 4 etc
+$servicescols_tab : 2;    // int: 1, 2, 3, 4 etc
+$servicescols_mob : 1;    // int: 1, 2, 3, 4 etc
+
+$loopmax : 10;               // dont change unless more than 10 items
+$gutter : $container--margin;
+$gutter_dt : $gutter;       // custom gutter for smaller desktop, in px, default $gutter
+$gutter_tab : 10px;         // custom gutter for tablet, in px, default $gutter
+$gutter_mob : $gutter;      // custom gutter for mobile, in px, default $gutter
+
+$servicescols_bottom : 10px;      // margin bottom of services rows, in px, default $gutter
+
+
+main{
+    section{
+        &.services{
+
+            .services--wrapper{
+                display: flex;
+                justify-content: flex-start;
+
+                @if $servicescols_dt != 'auto' {
+                    flex-wrap: wrap;
+
+                    .services--block{
+                        margin-bottom: $servicescols_bottom;
+                    }
+                }
+
+                .services--block{
+                    background-color: $white;
+                    margin-left: $gutter_dt;
+
+                    &:first-of-type{
+                        margin-left: 0px;
+                    }
+                    
+                    @if $servicescols_dt == 'auto' {
+                        @for $i from 1 through $loopmax {
+                            &:first-child:nth-last-child(#{$i}),
+                            &:first-child:nth-last-child(#{$i}) ~ .services--block {
+                                $gtrs : $i - 1;
+                                width: calc( (100% - (#{$gtrs} * #{$gutter_dt})) / #{$i});
+                            }
+                        }
+                    }@else{
+                        @for $i from 1 through $loopmax {
+                            &:first-child:nth-last-child(#{$i}),
+                            &:first-child:nth-last-child(#{$i}) ~ .services--block {
+                                $gtrs : $servicescols_dt - 1;
+                                width: calc( (100% - (#{$gtrs} * #{$gutter_dt})) / #{$servicescols_dt});
+                            }
+
+                            &:nth-child(#{$servicescols_dt}n+#{$servicescols_dt+1}){
+                                margin-left: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }   
+    }
+}
+
+
+@media only screen and (max-width: $snap--desktop) {
+    main{
+        section{
+            &.services{
+    
+                .services--wrapper{
+                    
+                    .services--block{
+                        
+                    }
+                }
+            }   
+        }
+    }
+}
+
+@media only screen and (max-width: $snap--tablet) {
+    main{
+        section{
+            &.services{
+    
+                .services--wrapper{
+                    flex-wrap: wrap;
+    
+                    .services--block{
+                        margin-bottom: $servicescols_bottom;
+                        margin-left: $gutter_tab;
+
+                        &:first-of-type{
+                            margin-left: 0px;
+                        }
+
+                        @for $i from 1 through $loopmax {
+                            &:first-child:nth-last-child(#{$i}),
+                            &:first-child:nth-last-child(#{$i}) ~ .services--block {
+                                $gtrs : $servicescols_tab - 1;
+                                width: calc( (100% - (#{$gtrs} * #{$gutter_tab})) / #{$servicescols_tab});
+                            }
+
+                            &:nth-child(#{$servicescols_tab}n+#{$servicescols_tab+1}){
+                                margin-left: 0;
+                            }
+                        }
+                    }
+                }
+            }   
+        }
+    }
+}
+
+@media only screen and (max-width: $snap--mobile) {
+    main{
+        section{
+            &.services{
+    
+                .services--wrapper{
+                    flex-wrap: wrap;
+    
+                    .services--block{
+                        
+                        @for $i from 1 through $loopmax {
+                            &:first-child:nth-last-child(#{$i}),
+                            &:first-child:nth-last-child(#{$i}) ~ .services--block {
+                                width: 100%;
+                                margin-left: 0px;
+                            }
+                        }
+                    }
+                }
+            }   
+        }
+    }
+}

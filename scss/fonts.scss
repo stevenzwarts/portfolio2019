@@ -1,0 +1,71 @@
+h1{
+    font-family: $font--primary;
+    font-size: 2em;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+h2{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: $font--primary;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+h3{
+    font-family: $font--primary;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+h4{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: $font--primary;
+    font-size: 1em;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+p{
+    font-family: $font--secondary;
+    font-size: $font--size--default;
+    line-height: $font--lineheight--default;
+    
+    &+p{
+        margin-top: 20px;
+    }
+}
+
+a{
+    color: $color--primary;
+    
+    &:hover{
+        color: $color--secondary;
+    }
+
+    &:visited{
+        color: $color--primary;
+    }
+}
+
+
+
+@media only screen and (max-width: $snap--desktop) {
+}
+
+@media only screen and (max-width: $snap--tablet) {
+    h1{ font-size: 1.6em; }
+    h2{ font-size: 1.4em; }
+    h3{ font-size: 1.2em; }
+    h4{ font-size: 1.0em; }
+}
+
+@media only screen and (max-width: $snap--mobile) {
+    h1{ font-size: 1.3em; }
+    h2{ font-size: 1.2em; }
+    h3{ font-size: 1.1em; }
+    h4{ font-size: 1.0em; }
+}

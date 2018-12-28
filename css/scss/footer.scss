@@ -1,0 +1,56 @@
+footer{
+    background-color: $color--primary;
+    padding-top: $container--margin;
+    padding-bottom: $container--margin;
+
+    .container{
+        display: flex;
+        justify-content: space-between;
+
+        .footer--left, .footer--center, .footer--right{
+            //font-size: 0.9em;
+            width: calc((100% - 40px) / 3);
+
+            a{
+                color: $white;
+            }
+
+            ul{
+                font-size: $font--size--default;
+                li{
+                    margin-bottom: 7px;
+                }
+            }
+        }
+
+        .footer--logo{
+            max-width: 170px;
+        }
+    }
+}
+
+@media only screen and (max-width: $snap--desktop) {
+
+}
+
+@media only screen and (max-width: $snap--tablet) {
+    footer{
+
+        .container{
+            flex-direction: column;
+
+            .footer--left, .footer--center, .footer--right{
+                width: 100%;
+                margin-bottom: $container--margin;
+                
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: $snap--mobile) {
+
+}

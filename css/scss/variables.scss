@@ -1,0 +1,55 @@
+/*
+	Theme Name: GEM Ouroboros
+	Section: Variables
+	Version: 1.0.0
+	Author: Gemini Design
+	Author URI: http://www.geminidesign.nl
+*/
+
+/* ----------------------------------------- */
+/* COLORS */
+/* ----------------------------------------- */
+
+$color--primary: #0083ad;
+$color--secondary: #270089;
+$color--tertiary: #30261d;
+
+$color--black: #000000;
+$color--white: #FFFFFF;
+$color--grey-light: #d8d8d8;
+$color--grey-dark: #5c5c5c;
+
+$white: #FFFFFF;
+$black: #000000;
+
+
+/* ----------------------------------------- */
+/* FONTS */
+/* ----------------------------------------- */
+
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab|Source+Sans+Pro');
+
+$font--primary: 'Roboto Slab', monospace;
+$font--secondary: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+$font--tertiary: Helvetica, Arial, sans-serif;
+
+$font--size--default: 15px;
+$font--lineheight--default: 22px;
+
+
+/* ----------------------------------------- */
+/* LAYOUT */
+/* ----------------------------------------- */
+
+$container--width: 980px;
+$container--margin: 30px;
+$container--margin--small: 20px;
+
+
+/* ----------------------------------------- */
+/* RESPONSIVE SNAPPING POINTS */
+/* ----------------------------------------- */
+
+$snap--mobile: 480px;
+$snap--tablet: 768px;
+$snap--desktop: 1024px;

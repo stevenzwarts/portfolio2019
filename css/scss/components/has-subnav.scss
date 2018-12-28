@@ -1,0 +1,159 @@
+$subnav--width: 250px;
+$subnav--color: #ececec;
+
+main{
+    section{
+        &.has-subnav{
+
+            &.has-subnav--right{
+                .container{
+                    flex-direction: row-reverse;
+                }
+            }
+            .container{
+                display: flex;
+                justify-content: space-between;
+
+                .subnav--wrapper{
+                    width: $subnav--width;
+                    background-color: #ececec;
+
+                    ul.subnav--list{
+                        margin: 30px;
+
+                        li.subnav--item{
+                            border-top: 1px solid $white;
+
+                            &:last-of-type{
+                                border-bottom: 1px solid $white;
+                            }
+
+                            a{
+                                padding: 8px 10px;
+                                display: block;
+                                height: 100%;
+                                width: calc(100% - 15px);
+                                text-decoration: none;
+                                color: $black;
+                                font-size: $font--size--default;
+
+                                &:hover{
+                                    background-color: $color--primary;
+                                    color: $white;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .content{
+                    width: calc(100% - #{$subnav--width} - #{$container--margin});
+                }
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: $snap--desktop) {
+    main{
+        section{
+            &.has-subnav{
+
+            }   
+        }
+    }
+}
+
+@media only screen and (max-width: $snap--tablet) {
+    main{
+        section{
+            &.has-subnav{
+
+                &.has-subnav--right{
+                    .container{
+                        flex-direction: column;
+                    }
+                }
+
+                .container{
+                    flex-direction: column;
+
+                    .subnav--wrapper{
+                        width: 100%;
+                        cursor: pointer;
+                        position: relative;
+                        z-index: 0;
+
+                        &:after{
+                            content: url(../img/arrow-black.svg);
+                            height: 10px;
+                            width: 15px;
+                            position: absolute;
+                            right: 20px;
+                            top: 22px;
+                            transition: transform 0.2s ease-in-out;
+                        }
+
+                        &:not(.is-active){
+                            .subnav--title{
+                                margin-bottom: 0;
+                            }
+                        }
+                        
+                        ul.subnav--list{
+                            margin: 20px;
+
+                            li.subnav--item{
+                                border: none;
+                                overflow: hidden;
+                                max-height: 0px;
+
+                                &:last-of-type{
+                                    border: none;
+                                }
+                            }
+                        }
+
+                        &.is-active{
+
+                            &:after{
+                                transform: rotate(180deg);
+                            }
+
+                            ul.subnav--list{
+    
+                                li.subnav--item{
+                                    display: block;
+                                    border-bottom: 1px solid $white;
+                                    overflow: none;
+                                    max-height: 200px;
+                                    transition: max-height 0.3s ease-in-out;
+
+                                    &:last-of-type{
+                                        border-bottom: 1px solid $white;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .content{
+                        margin-top: $container--margin;
+                        width: 100%;
+                    }
+                }
+            }   
+        }
+    }
+}
+
+@media only screen and (max-width: $snap--mobile) {
+    main{
+        section{
+            &.has-subnav{
+
+            }   
+        }
+    }
+}

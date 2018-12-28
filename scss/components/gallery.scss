@@ -1,0 +1,129 @@
+main{
+    section{
+        &.gallery{
+
+            .gallery--nav{
+                display: flex;
+                justify-content: space-between; 
+                margin-bottom: 10px;               
+
+                .gallery--nav--prev, .gallery--nav--next{
+                    background-image: url('../img/arrow-black.svg');
+                    background-size: 20px 30px;
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    transform: rotate(90deg);
+                    width: 30px;
+                    height: 30px;
+                    background-color: $white;
+                    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+                    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+                    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+                    cursor: pointer;
+                    transition: background-color 0.2s ease-in-out;
+
+                    &:hover{
+                        background-color: darken($white, 10%);
+                    }
+                }
+
+                .gallery--nav--next{
+                    transform: rotate(-90deg);
+                }
+            }
+
+            .gallery--large, .gallery--thumbs{
+                
+                .gallery--item{
+                    background-size: cover;
+                    background-position: center center;
+                    cursor: pointer;
+
+                    &:focus{
+                        border: none !important;
+                        outline: none !important
+                    }
+                }
+            }
+
+            .gallery--large{
+
+                .gallery--item{
+                    width: 100%;
+                    height: 150px;
+                    text-align: center;
+                }
+            }
+
+            .gallery--thumbs{
+                width: 50%;
+                margin: 30px auto 0 auto;
+
+                .gallery--item{
+                    height: 50px;
+                    overflow: hidden;
+                    text-align: center;
+                    margin-right: 20px;
+                    position: relative;
+
+                    &:before{
+                        content: '';
+                        position: absolute;
+                        height: 100%;
+                        width: 100%;
+                        background-color: $color--primary;
+                        opacity: 0.5;
+                        left: 0;
+                        top: 0;
+                        transition: opacity 0.2s ease-in-out;
+                    }
+
+                    &:hover, &.slick-current{
+                        &:before{
+                            opacity: 0;
+                            transition: opacity 0.2s ease-in-out;
+                        }
+                    }
+
+                    &:last-of-type{
+                        margin-right: 0;
+                    }
+                }
+            }
+        }   
+    }
+}
+
+
+@media only screen and (max-width: $snap--desktop) {
+    main{
+        section{
+            &.gallery{
+    
+            }   
+        }
+    }
+}
+
+@media only screen and (max-width: $snap--tablet) {
+    main{
+        section{
+            &.gallery{
+
+                .gallery--thumbs{
+                    width: calc(100% + 20px);
+                }
+            }   
+        }
+    }
+}
+
+@media only screen and (max-width: $snap--mobile) {
+    main{
+        section{
+            &.gallery{
+
+            }   
+        }
+    }
+}

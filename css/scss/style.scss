@@ -1,0 +1,93 @@
+	/*
+	Theme Name: GEM Ouroboros
+	Section: Style
+	Version: 1.0.0
+	Author: Gemini Design
+	Author URI: http://www.geminidesign.nl
+*/
+
+/* ----------------------------------------- */
+/* BASE IMPORTS */
+/* ----------------------------------------- */
+
+@import "variables";
+@import "default/reset";
+// @import "default/wordpress";
+@import "fonts";
+
+
+/* ----------------------------------------- */
+/* BASE LAYOUT */
+/* ----------------------------------------- */
+
+body{
+	font-family: $font--secondary;
+	font-size: $font--size--default;
+	line-height: $font--lineheight--default;
+}
+
+#wrapper{
+	display: flex;
+	min-height: 100vh;
+
+	.container{
+		margin: 0 auto;
+	}
+
+	main{
+		flex: 1;
+	}
+
+	.text--light{
+		color: $white;
+	}
+}
+
+/*@media only screen and (max-width: $snap--desktop) {
+    body {
+        background-color: yellow;
+    }
+}
+
+@media only screen and (max-width: $snap--tablet) {
+    body {
+        background-color: orange;
+    }
+}*/
+
+@media only screen and (max-width: $snap--mobile) {
+    body {
+        #wrapper{
+			.container{
+				width: calc(100% - (#{$container--margin--small} * 2));
+			}
+		}
+    }
+}
+
+
+/* ----------------------------------------- */
+/* DEFAULT PARTS */
+/* ----------------------------------------- */
+
+@import "header";
+@import "body";
+@import "footer";
+
+
+/* ----------------------------------------- */
+/* LIBRARIERS IMPORT */
+/* ----------------------------------------- */
+
+// @import "libs/slick";
+
+
+/* ----------------------------------------- */
+/* COMPONTENTS IMPORT */
+/* ----------------------------------------- */
+
+// @import "components/...";
+// @import "components/services";
+// @import "components/gallery";
+// @import "components/has-subnav";
+// @import "components/tabs";
