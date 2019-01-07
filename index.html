@@ -52,7 +52,7 @@
 								<div class="tl-field"></div>
 								<div class="tl-field"></div>
 								<div class="tl-field btm blue">
-									<span class="tl-ball">1</span>
+									<span class="tl-ball" id="ball__1">1</span>
 								</div>
 								<div class="tl-field line blue"></div>
 								<div class="tl-field line blue"></div>
@@ -67,13 +67,13 @@
 								<div class="tl-field"></div>
 								<div class="tl-field"></div>
 								<div class="tl-field btm yellow">
-									<span class="tl-ball">6</span>
+									<span class="tl-ball ball__yellow"id="ball__6">6</span>
 								</div>
 								<div class="tl-field line yellow"></div>
 								<div class="tl-field mtb yellow"></div>
 								<div class="tl-field"></div>
 								<div class="tl-field btm yellow">
-									<span class="tl-ball">5</span>
+									<span class="tl-ball ball__yellow" id="ball__5">5</span>
 								</div>
 								<div class="tl-field line yellow"></div>
 								<div class="tl-field mtb yellow"></div>
@@ -82,7 +82,7 @@
 								<div class="tl-field"></div>
 								<div class="tl-field"></div>
 								<div class="tl-field btm blue">
-									<span class="tl-ball" id="ball__gdd">2</span>
+									<span class="tl-ball" id="ball__2">2</span>
 								</div>
 								<div class="tl-field line blue"></div>
 								<div class="tl-field line blue"></div>
@@ -103,17 +103,17 @@
 								<div class="tl-field line blue"></div>
 								<div class="tl-field line blue"></div>
 								<div class="tl-field line blue"></div>
-								<div class="tl-field mtt cont blue"></div>
+								<div class="tl-field mtt cont blue out-yellow"></div>
 								<div class="tl-field line blue"></div>
 								<div class="tl-field line blue"></div>
 								<div class="tl-field line blue"></div>
-								<div class="tl-field ttm blue">
-										<div class="tl-field mtt cont blue"></div>
+								<div class="tl-field ttm blue out-yellow">
+										<div class="tl-field mtt cont blue out-yellow"></div>
 								</div>
 								<div class="tl-field mtb cont blue"></div>
 								<div class="tl-field line blue"></div>
 								<div class="tl-field mtb cont blue"></div>
-								<div class="tl-field ttm cont blue"></div>
+								<div class="tl-field ttm cont blue out-yellow"></div>
 								<div class="tl-field line blue"></div>
 								<div class="tl-field line blue"></div>
 								<div class="tl-field btm cont blue">
@@ -144,11 +144,11 @@
 								<div class="tl-field"></div>
 								<div class="tl-field"></div>
 								<div class="tl-field ttm blue">
-									<span class="tl-ball">3</span>
+									<span class="tl-ball" id="ball__4">4</span>
 								</div>
 								<div class="tl-field mtb blue"></div>
 								<div class="tl-field ttm blue">
-									<span class="tl-ball">4</span>
+									<span class="tl-ball" id="ball__3">3</span>
 								</div>
 								<div class="tl-field line blue"></div>
 								<div class="tl-field mtt blue"></div>
@@ -202,22 +202,30 @@
 					<div class="sectionwrapper">
 						<section class="work">
 							<h4>Work</h4>
-							<div class="work__job" id="work__mdd">
+							<div class="work__job" id="work__1">
 								<h5>Title</h5>
 								<p>Description something more title longer text</p>
 							</div>
-							<div class="work__job" id="work__gdd">
+							<div class="work__job" id="work__2">
 								<h5>Title</h5>
 								<p>Description something more title longer text</p>
 							</div>
-							<div class="work__job" id="work__uniqs">
+							<div class="work__job" id="work__3">
 								<h5>Title</h5>
 								<p>Description something more title longer text</p>
 							</div>
-							<div class="work__job" id="work__gee">
-									<h5>Title</h5>
-									<p>Description something more title longer text</p>
-								</div>
+							<div class="work__job" id="work__4">
+								<h5>Title</h5>
+								<p>Description something more title longer text</p>
+							</div>
+							<div class="work__job" id="work__5">
+								<h5>Title</h5>
+								<p>Description something more title longer text</p>
+							</div>
+							<div class="work__job" id="work__6">
+								<h5>Title</h5>
+								<p>Description something more title longer text</p>
+							</div>
 						</section>
 						<section class="edu">Edu</section>
 					</div>
@@ -237,10 +245,27 @@
 				$('ul.menu').toggleClass('is-active');
 			});
 
-			$( "#work__gdd, #ball__gdd" ).hover(function() {
-				// console.log('hover');
-				$("#work__gdd, #ball__gdd").toggleClass('is-hover');
+			$( ".tl-ball, .work__job" ).hover(function(e) {
+				
+				var jobid = this.id;
+
+				if($(this).hasClass("tl-ball")){
+					jobid = jobid.replace('ball__', '');
+				}
+
+				if($(this).hasClass("work__job")){
+					jobid = jobid.replace('work__', '');
+				}
+				
+				$("#ball__"+jobid).toggleClass('is-hover');
+				$("#work__"+jobid).toggleClass('is-hover');
 			});
+
+			// $( "#work__gdd, #ball__gdd" ).hover(function() {
+			// 	console.log('hover');
+			// 	$("#work__gdd, #ball__gdd").toggleClass('is-hover');
+			// });
+
 
 			$(window).scroll(function() {
 				if ($(this).scrollTop() > 150){  

@@ -47,13 +47,15 @@ body{
     body {
         background-color: yellow;
     }
-}
+}*/
 
 @media only screen and (max-width: $snap--tablet) {
     body {
-        background-color: orange;
+        #wrapper{
+			flex-wrap: wrap;
+		}
     }
-}*/
+}
 
 @media only screen and (max-width: $snap--mobile) {
     body {
