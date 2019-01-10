@@ -221,6 +221,93 @@ main{
         width: 100%;
         margin-bottom: 0;
         border-top: 10px solid $color--primary;
+
+        .projectswrapper{
+            display: flex;
+            justify-content: space-between;
+
+            .project{
+                width: calc(25% - #{$container--margin});
+                background-color: #ececec;
+                cursor: pointer;
+
+                .project__thumb{
+                    width: 100%;
+                    background-color: $color--primary;
+                    min-height: 100px;
+                }
+
+                .project__title{
+                    text-transform: uppercase;
+                    margin: 20px 20px 10px;
+                }
+
+                .project__desc{
+                    margin: 0 20px 20px;
+                }
+            }
+        }
+
+        .projectmorewrapper{
+            background-color: rgba(0,0,0,0);
+            transition: 200ms ease-in-out;
+
+            &.is-active{
+                position: fixed;
+                width: 100vw;
+                height: 100vh;
+                top: 0;
+                left: 0;
+                z-index: 888;
+                background-color: rgba(0,0,0,0.8);
+
+                
+            }
+
+            .projectmore{
+                width: 0px;
+                height: 100vh;
+                background-color: $white;
+                position: fixed;
+                top: 0;
+                right: 0;
+                z-index: 999;
+                transition: 200ms ease-in-out;
+
+                &.is-active{
+                    width: 600px;
+                    max-width: 100%;
+
+                    .projectmore__close {
+                        position: absolute;
+                        left: -42px;
+                        top: 22px;
+                        width: 20px;
+                        height: 20px;
+                        opacity: 0.3;
+                        z-index: 9999;
+                        transition: 200ms ease-in-out;
+    
+                        &:hover{
+                            opacity: 1;
+                            transform: rotate(90deg);
+                        }
+    
+                        &:before, &:after{
+                            position: absolute;
+                            left: 10px;
+                            content: ' ';
+                            height: 20px;
+                            width: 2px;
+                            background-color: #FFF;
+                        }
+    
+                        &:before { transform: rotate(45deg); }
+                        &:after { transform: rotate(-45deg); }
+                    }
+                }
+            }              
+        }
     }
 }
 

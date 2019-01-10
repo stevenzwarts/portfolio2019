@@ -233,8 +233,37 @@
 						<section class="skills">Skills</section>
 						<section class="brands">Brands</section>
 					</div>
-					<section class="projects">Projects</section>
-				</div>			
+					<section class="projects">
+						<div class="projectswrapper">
+							<div class="project" id="projectthumb__1">
+								<div class="project__thumb">Image</div>
+								<div class="project__title">Project title</div>
+								<div class="project__desc">Lorem ipsum dolor sit amet</div>
+							</div>
+							<div class="project" id="projectthumb__2"></div>
+							<div class="project" id="projectthumb__3"></div>
+							<div class="project" id="projectthumb__4"></div>
+						</div>
+						<div class="projectmorewrapper">
+							<div class="projectmore" id="project__1">
+								<a href="#" class="projectmore__close"></a>
+								Project 1
+							</div>
+							<div class="projectmore" id="project__2">
+								<a href="#" class="projectmore__close"></a>
+								Project 2
+							</div>
+							<div class="projectmore" id="project__3">
+								<a href="#" class="projectmore__close"></a>
+								Project 3
+							</div>
+							<div class="projectmore" id="project__4">
+								<a href="#" class="projectmore__close"></a>
+								Project 4
+							</div>
+						</div>
+					</section>
+				</div>
 			</main>
 			<!-- <footer>Footer</footer> -->
 		</div>
@@ -261,11 +290,17 @@
 				$("#work__"+jobid).toggleClass('is-hover');
 			});
 
-			// $( "#work__gdd, #ball__gdd" ).hover(function() {
-			// 	console.log('hover');
-			// 	$("#work__gdd, #ball__gdd").toggleClass('is-hover');
-			// });
+			$('.project').on('click', function() {
+				$('.projectmorewrapper').addClass('is-active');
+				var projectid = this.id;
+				projectid = projectid.replace('projectthumb__', '');
+				$('#project__'+projectid).addClass('is-active');
+			});
 
+			$('.projectmorewrapper').on('click', function() {
+				$('.projectmorewrapper').removeClass('is-active');
+				$('.projectmore').removeClass('is-active');
+			});
 
 			$(window).scroll(function() {
 				if ($(this).scrollTop() > 150){  
