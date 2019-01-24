@@ -41,6 +41,29 @@ body{
 	.text--light{
 		color: $white;
 	}
+
+	.button{
+		display: inline-block;
+		padding: 7px 20px 4px 20px;
+		text-decoration: none;
+		border-radius: 0px;
+		transition: all 0.1s ease-in-out;
+
+		&:hover{
+			padding: 5px 20px 6px 20px;
+		}
+
+		&.primary{
+			background-color: $color--primary;
+			border-bottom: 4px solid $color--primary;
+			color: $white;
+
+			&:hover{
+				background-color: darken($color--primary, 2%);
+				border-bottom: 4px solid darken($color--primary, 10%);
+			}
+		}
+	}
 }
 
 /*@media only screen and (max-width: $snap--desktop) {
