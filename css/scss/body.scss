@@ -1,3 +1,5 @@
+@import "timeline";
+
 main{
     width: 85%;
 	background-color: $white;
@@ -13,181 +15,6 @@ main{
         margin-bottom: $container--margin;
         padding: $container--margin;
         box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.05);
-    }
-
-    .timeline{
-        width: 100%;
-
-        .timelinewrapper{
-            width: 100%;
-            // background-color: #ececec;
-            margin: 0 auto;
-
-            .tl-row{
-                display: flex;
-                justify-content: space-between;
-
-                .tl-field{
-                    height: 40px;
-                    width: calc(100% / 14);
-                    position: relative;
-                    // border: 1px solid #ececec;
-                    // overflow: hidden;
-
-                    .tl-field{
-                        height: 100%;
-                        width: 100%;
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        border: 0;
-                    }
-
-                    .tl-ball{
-                        display: block;
-                        position: absolute;
-                        height: 25px;
-                        width: 25px;
-                        top: calc(50% - 12px);
-                        left: 12px;
-                        background-color: $white;
-                        border: 4px solid $color--primary;
-                        border-radius: 50%;
-                        z-index: 99;
-                        line-height: 16px;
-                        text-align: center;
-
-                        &.ball__yellow{
-                            border: 4px solid $color--secondary;
-                        }
-
-                        &.is-hover{
-                            background-color: $color--secondary;
-                            cursor: pointer;
-                            color: $white;
-                        }
-                    }
-
-                    &.line, &.btm, &.mtt, &.mtb, &.ttm, &.ttb{
-                        &:after, &:before{
-                            content: '';
-                            display: block;
-                            height: 4px;
-                            position: absolute;
-                        }
-                    }
-
-                    &.line{
-                        &:after{
-                            width: 100%;
-                            top: calc(50% - 2px);
-                        }
-                    }
-
-                    &.btm{
-                        &:before{
-                            width: calc(100% - 19px);
-                            top: calc(50% - 2px);
-                            right: 0;
-                        }
-                        &:after{
-                            width: 30px;
-                            bottom: 7px;
-                            left: -6px;
-                            transform: rotate(-45deg);
-                        }
-                    }
-
-                    &.mtt{
-                        &:before{
-                            width: calc(100% - 19px);
-                            top: calc(50% - 2px);
-                            left: 0;
-                        }
-                        &:after{
-                            width: 30px;
-                            top: 7px;
-                            right: -6px;
-                            transform: rotate(-45deg);
-                        }
-                    }
-
-                    &.mtb{
-                        &:before{
-                            width: calc(100% - 19px);
-                            top: calc(50% - 2px);
-                            left: 0;
-                        }
-                        &:after{
-                            width: 30px;
-                            bottom: 7px;
-                            right: -6px;
-                            transform: rotate(45deg);
-                        }
-                    }
-
-                    &.ttm{
-                        &:before{
-                            width: calc(100% - 19px);
-                            top: calc(50% - 2px);
-                            right: 0;
-                        }
-                        &:after{
-                            width: 30px;
-                            top: 7px;
-                            left: -6px;
-                            transform: rotate(45deg);
-                        }
-
-                        &.no-cont{
-                            &:before{
-                                display: none;
-                            }
-                        }
-                    }
-
-                    &.ttb{
-                        &:before{
-                            width: 30px;
-                            bottom: 7px;
-                            right: -6px;
-                            transform: rotate(45deg);
-                        }
-                        &:after{
-                            width: 30px;
-                            top: 7px;
-                            left: -6px;
-                            transform: rotate(45deg);
-                        }
-                    }
-
-                    &.cont{
-                        &:before{
-                            width: 100%;
-                            top: calc(50% - 2px);
-                            left: 0;
-                        }
-                    }
-
-                    &.yellow{
-                        &:before, &:after{
-                            background-color: $color--secondary;
-                        }
-                    }
-
-                    &.blue{
-                        &:before, &:after{
-                            background-color: $color--primary;
-                        }
-                        &.out-yellow{
-                            &:after{
-                                background-color: $color--secondary;
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
 
     .work{
@@ -250,51 +77,83 @@ main{
 
         .projectmorewrapper{
             background-color: rgba(0,0,0,0);
-            transition: 200ms ease-in-out;
+            transition: opacity 200ms ease-in-out;
+            opacity: 0;
+            display: flex;
+            height: 0;
 
             &.is-active{
                 position: fixed;
+                opacity: 1;
                 width: 100vw;
                 height: 100vh;
                 top: 0;
                 left: 0;
                 z-index: 888;
-                background-color: rgba(0,0,0,0.8);   
+                background-color: rgba(0,0,0,0.8);  
+
+                .projectmoreimage{
+                    opacity: 1;
+                    transition: opacity 200ms ease-in-out;
+                    transition-delay: 0.5s;
+                }
+            }
+
+            .projectmoreimage{
+                width: 70%;
+                color: $white;
+                opacity: 0;
+                overflow-y: scroll;
+                margin-left: 30%;
+
+                .imagewrapper{
+                    width: 80%;
+                    margin: 0 auto;
+                    padding: 30px 0;
+                    
+                    img{
+                        display: none;
+                        max-width: 100%;
+                        height: auto;
+
+                        &.is-active{
+                            display: block;
+                        }
+                    }
+                }
             }
 
             .projectmore{
-                width: 600px;
+                width: 30%;
                 height: 100vh;
                 background-color: $white;
-                position: fixed;
-                top: 0;
-                right: -600px;
                 z-index: 999;
-                transition: right 200ms ease-in-out;
                 padding: 40px;
+                position: absolute;
+                left: -30%;
+                overflow-y: auto;
 
                 &.is-active{
-                    right: 0px;
                     max-width: 100%;
+                    display: block;
+                    left: 0px;
+                    transition: left 200ms ease-in-out;
+                    transition-delay: 0.1s;
 
                     .projectmore__close {
-                        position: absolute;
-                        left: -42px;
-                        top: 22px;
-                        width: 20px;
-                        height: 20px;
-                        opacity: 0.3;
-                        z-index: 9999;
-                        transition: 200ms ease-in-out;
+                        position: relative;
+                        display: block;
+                        background-color: $color--primary;
+                        width: 100%;
+                        height: 30px;
     
                         &:hover{
-                            opacity: 1;
-                            transform: rotate(90deg);
                         }
     
                         &:before, &:after{
                             position: absolute;
-                            left: 10px;
+                            right: 20px;
+                            top: 5px;
                             content: ' ';
                             height: 20px;
                             width: 2px;
@@ -309,9 +168,45 @@ main{
                 .projectmore__image{
                     position: relative;
                     width: 100%;
-                    height: 300px;
+                    height: 100px;
                     background-color: #ececec;
                     margin-bottom: 30px;
+                }
+
+                .projectmore__moreimages{
+
+                    padding-top: $container--margin;
+
+                    .projectmore__anotherimage{
+                        width: 100%;
+                        background-color: $white;
+                        border: 1px solid $color--grey-light;
+                        margin-bottom: 10px;
+                        display: flex;
+                        align-items: center;
+                        color: $color--grey-dark;
+                        font-size: 14px;
+                        cursor: pointer;
+
+                        .thumb{
+                            margin: 7px 15px 7px 7px;
+                            height: 15px;
+                            width: 15px;
+                            background-color: $color--grey-dark;
+                        }
+
+                        &:hover{
+                            background-color: $color--grey-light;
+                        }
+
+                        &.is-active{
+                            border-color: $color--primary; 
+
+                            .thumb{
+                                background-color: $color--primary;
+                            }
+                        }
+                    }
                 }
 
                 a.button{
@@ -324,67 +219,7 @@ main{
 
 @media only screen and (max-width: 1500px) {
     main{
-        .timeline{
-			.timelinewrapper{    
-                .tl-row{
-                    .tl-field{
-                        height: 20px;
-
-                        .tl-ball{
-                            height: 20px;
-                            width: 20px;
-                            top: calc(50% - 10px);
-                            left: 8px;
-                            font-size: 12px;
-                            line-height: 12px;
-                        }
-
-                        &.mtt{
-                            &:after{
-                                top: 2px;
-                                right: -3px;
-                            }
-                        }
-
-                        &.btm{
-                            &:after{
-                                bottom: 3px;
-                                left: -3px;
-                            }
-                        }
-
-                        &.mtb{
-                            &:after{
-                                bottom: 3px;
-                                right: -2px;
-                            }
-                        }
-
-                        &.ttm{
-                            &:after{
-                                top: 3px;
-                                left: -3px;
-                            }
-                        }
-
-                        &.btm, &.mtt, &.mtb, &.ttm, &.ttb{
-                            &:before{
-                                width: calc(100% - 9px);
-                            }
-                            &:after{
-                                width: 15px;
-                            }
-                        }
-
-                        &.cont{
-                            &:before{
-                                width: 100%;
-                            }
-                        }
-                    }
-                }
-            }
-		}
+        
     }
 }
 
@@ -409,13 +244,99 @@ main{
 @media only screen and (max-width: $snap--tablet) {
     main{
         padding: $container--margin--small;
+
+        .projects{
+
+            .projectswrapper{
+                flex-wrap: wrap;
+
+                .project{
+                    width: calc(50% - #{$container--margin}/2);
+                    margin-bottom: $container--margin;
+
+                    &:nth-last-of-type(-n+2){
+                        margin-bottom: 0;
+                    }
+                }
+            }
+                
+            .projectmorewrapper{
+                display: flex;
+                flex-wrap: wrap;
+
+
+                .projectmore{
+                    width: 100%;
+                    height: auto;
+                    left: -100%;
+                    position: relative;
+                    display: none;
+
+                    &.is-active{
+                        left: 0;
+                    }
+                }
+
+                .projectmoreimage{
+                    width: 100%;
+                    margin-left: 0;
+                }
+
+                &.is-active{
+                    overflow-y: scroll;
+                }
+            }
+        }
     }
 }
 
 @media only screen and (max-width: $snap--mobile) {
     main{
-        .timeline{
-            display: none;
+        padding: $container--margin--small;
+
+        .projects{
+
+            .projectswrapper{
+
+                .project{
+                    width: calc(100%);
+
+                    &:nth-last-of-type(-n+2){
+                        margin-bottom: $container--margin;
+                    }
+
+                    &:nth-last-of-type(1){
+                        margin-bottom: 0;
+                    }
+                }
+            }
+                
+            .projectmorewrapper{
+                display: flex;
+                flex-wrap: wrap;
+
+
+                .projectmore{
+                    width: 100%;
+                    height: auto;
+                    left: -100%;
+                    position: relative;
+                    display: none;
+
+                    &.is-active{
+                        left: 0;
+                    }
+                }
+
+                .projectmoreimage{
+                    width: 100%;
+                    margin-left: 0;
+                }
+
+                &.is-active{
+                    overflow-y: scroll;
+                }
+            }
         }
     }
 }

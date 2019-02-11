@@ -16,7 +16,7 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="https://code.jquery.com/jquery-migrate-3.0.1.js"></script>
+		<!-- <script src="https://code.jquery.com/jquery-migrate-3.0.1.js"></script> -->
 		<!-- <script type="text/javascript" src="./js/libs/slick.min.js"></script> -->
 
 	</head>
@@ -235,16 +235,27 @@
 					</div>
 					<section class="projects">
 						<div class="projectswrapper">
-							<div class="project" id="projectthumb__1">
+							<div class="project" id="" data-projecttrigger="1">
 								<div class="project__thumb">Image</div>
 								<div class="project__title">Project title</div>
 								<div class="project__desc">Lorem ipsum dolor sit amet</div>
 							</div>
-							<div class="project" id="projectthumb__2"></div>
-							<div class="project" id="projectthumb__3"></div>
-							<div class="project" id="projectthumb__4"></div>
+							<div class="project" id="" data-projecttrigger="2">
+								<div class="project__thumb">Image</div>
+								<div class="project__title">Project title</div>
+								<div class="project__desc">Lorem ipsum dolor sit amet</div>
+							</div>
+							<div class="project" id="" data-projecttrigger="3">
+								<div class="project__thumb">Image</div>
+								<div class="project__title">Project title</div>
+								<div class="project__desc">Lorem ipsum dolor sit amet</div>
+							</div>
+							<div class="project" id="" data-projecttrigger="4">
+								<div class="project__thumb">Image</div>
+								<div class="project__title">Project title</div>
+								<div class="project__desc">Lorem ipsum dolor sit amet</div>
+							</div>
 						</div>
-						<a href="#" class="button primary">Lees hier meer</a>
 						<div class="projectmorewrapper">
 							<div class="projectmore" id="project__1">
 								<a href="#" class="projectmore__close"></a>
@@ -252,6 +263,16 @@
 								<h3 class="projectmore__title">Project title</h3>
 								<div class="projectmore__desc">
 									Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Nullam sit amet enim. Suspendisse id velit vitae ligula volutpat condimentum. Aliquam erat volutpat. Sed quis velit. Nulla facilisi. Nulla libero. Vivamus pharetra posuere sapien. Nam consectetuer. Sed aliquam, nunc eget euismod ullamcorper, lectus nunc ullamcorper orci, fermentum bibendum enim nibh eget ipsum. Donec porttitor ligula eu dolor. Maecenas vitae nulla consequat libero cursus venenatis.
+								</div>
+								<div class="projectmore__moreimages">
+									<div class="projectmore__anotherimage" data-imageproject="1" data-imagelarge="1">
+										<div class="thumb"></div>
+										<div class="desc">Homepage</div>
+									</div>
+									<div class="projectmore__anotherimage" id="anotherimage__1__2" data-imageproject="1" data-imagelarge="2">
+										<div class="thumb"></div>
+										<div class="desc">Content pagina</div>
+									</div>
 								</div>
 								<a href="#" class="button primary">Lees hier meer</a>
 							</div>
@@ -266,6 +287,16 @@
 							<div class="projectmore" id="project__4">
 								<a href="#" class="projectmore__close"></a>
 								Project 4
+							</div>
+
+							<div class="projectmoreimage">
+								<div class="imagewrapper">
+										<img src="img/projects/large/nederveen_01.jpg" data-imageproject="1" data-imagelarge="1" alt="Project 1 Image 1" class="project_image_large">
+										<img src="img/projects/large/nederveen_02.jpg" data-imageproject="1" data-imagelarge="2" alt="Project 1 Image 2" class="project_image_large">
+										<img src="img/projects/large/project2_02.jpg" data-imageproject="2" data-imagelarge="1" alt="Project 2 Image 1" class="project_image_large">
+										<img src="img/projects/large/project3_02.jpg" data-imageproject="3" data-imagelarge="1" alt="Project 3 Image 1" class="project_image_large">
+										<img src="img/projects/large/project4_02.jpg" data-imageproject="4" data-imagelarge="1" alt="Project 4 Image 1" class="project_image_large">
+								</div>
 							</div>
 						</div>
 					</section>
@@ -297,15 +328,22 @@
 			});
 
 			$('.project').on('click', function() {
+				$('#wrapper').css({"overflow": "hidden", "max-height": "100vh"});
 				$('.projectmorewrapper').addClass('is-active');
-				var projectid = this.id;
-				projectid = projectid.replace('projectthumb__', '');
+				projectid = $(this).attr("data-projecttrigger");
 				$('#project__'+projectid).addClass('is-active');
+
+				$('#project__'+projectid+' .projectmore__anotherimage:first').addClass('is-active');
+				$('.project_image_large').removeClass('is-active');
+				$('img[data-imageproject='+projectid+'][data-imagelarge=1]').addClass('is-active');
 			});
 
-			$('.projectmorewrapper').on('click', function() {
+			$('.projectmore__close').on('click', function() {
+				$('#wrapper').css({"overflow": "", "max-height": ""});
 				$('.projectmorewrapper').removeClass('is-active');
 				$('.projectmore').removeClass('is-active');
+
+				$('.projectmore__anotherimage').removeClass('is-active');
 			});
 
 			$(window).scroll(function() {
@@ -316,6 +354,16 @@
 					$('header').removeClass("scrolled");
 				}
 			});
+
+			$('.projectmore__anotherimage').on('click', function() {
+				$('.projectmore__anotherimage').removeClass('is-active');
+				$(this).addClass('is-active');
+				anotherproject = $(this).attr("data-imageproject");
+				anotherimage = $(this).attr("data-imagelarge");
+				$('.project_image_large').removeClass('is-active');
+				$('img[data-imageproject='+anotherproject+'][data-imagelarge='+anotherimage+']').addClass('is-active');
+			});
+			
 
 		</script>
 		<!-- <script type="text/javascript" src="./js/components/slider.js"></script> -->
