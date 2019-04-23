@@ -27,15 +27,34 @@ h4{
     font-size: 1em;
     margin-bottom: 20px;
     font-weight: bold;
+
+    .work__job+&{
+        margin-top: 20px;
+    }
+}
+
+h5{
+    font-family: $font--primary;
+    font-size: 1em;
+    margin-bottom: 10px;
 }
 
 p{
     font-family: $font--secondary;
     font-size: $font--size--default;
     line-height: $font--lineheight--default;
+    color: $color--grey-dark;
     
     &+p{
         margin-top: 20px;
+    }
+
+    &+h5{
+        margin-top: 20px;
+    }
+
+    strong{
+        font-weight: bold;
     }
 }
 
@@ -51,9 +70,27 @@ a{
     }
 }
 
+strong{
+    font-weight: bold;
+}
+
+ul{
+    font-family: $font--secondary;
+    font-size: $font--size--default;
+    line-height: $font--lineheight--default;
+    color: $color--grey-dark;
+    list-style-type: disc;
+    list-style-position: inside;
+    li{
+
+    }
+}
 
 
 @media only screen and (max-width: $snap--desktop) {
+    p{
+        font-size: 0.9em;
+    }
 }
 
 @media only screen and (max-width: $snap--tablet) {

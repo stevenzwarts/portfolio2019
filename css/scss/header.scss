@@ -3,25 +3,170 @@ header{
 	background-color: $color--primary;
 	padding: $container--margin;
 	transition: width 0.3s;
+	color: $white;
+	position: relative;
+	
+	.about{
+		position: fixed;
+		height: calc(100vh - 60px);
+		width: calc(300px - 60px);
+		transition: width 0.3s;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+
+		.header__hide{
+			transition: opacity 0.1s ease-out 0.3s;
+		}
+
+		.about__description{
+			.about__picture{
+				background-image: url('../img/stevenzwarts.jpg');
+				background-size: cover;
+				background-position: center center;
+				height: 150px;
+				width: 100%;
+				background-color: $color--grey-light;
+				margin-bottom: 20px;
+				border-top: 10px solid $color--secondary;
+				transition: all 0.2s ease-in-out;
+			}
+
+			h2{
+				text-transform: capitalize;
+				font-weight: 100;
+				margin-bottom: 10px;
+			}
+		}
+
+		.about__contact{
+
+			a{
+				color: $white;
+				text-decoration: none;
+				display: block;
+
+				&:hover{
+					text-decoration: underline;
+				}
+
+				&.linkedin{
+					margin-top: 10px;
+					&:before{
+						content:'';
+						height: 20px;
+						width: 20px;
+						// background-color: #FFF;
+						display: inline-block;
+						margin-right: 10px;
+						margin-bottom: -5px;
+						background-image: url('../img/linkedin.svg')
+					}
+				}
+
+				&.email{
+					&:before{
+						content:'';
+						height: 20px;
+						width: 20px;
+						// background-color: #FFF;
+						display: inline-block;
+						margin-right: 10px;
+						margin-bottom: -5px;
+						background-image: url('../img/mail.svg')
+					}
+				}
+			}
+		}
+	}
+
+	p{
+		color: $white;
+	}
 
 	&.scrolled{
-		width: 100px;
+		width: 200px;
+
+		.about{
+			width: 140px;
+
+			.about__picture{
+				height: 100px;
+			}
+
+			h2{
+				font-size: 16px;
+				margin-bottom: 5px;
+			}
+
+			h4{
+				font-size: 12px;
+			}
+		}
+
+		.header__hide{
+			opacity: 0;
+			transition: opacity 0.1s ease-in 0s;
+			height: 0px;
+		}
 	}
 }
 
 @media only screen and (max-width: $snap--desktop) {
 	header{
 		width: 200px;
+
+		h2{
+			font-size: 16px;
+			margin-bottom: 5px;
+		}
+
+		h4{
+			font-size: 12px;
+		}
+
+		&.scrolled{
+			width: 200px;
+	
+			.about{
+				width: 100%;
+	
+				.about__picture{
+					height: 150px;
+				}
+
+			}
+	
+			.header__hide{
+				opacity: 1;
+				height: auto;
+			}
+		}
+
+			.about{
+				position: relative;
+				width: 100%;
+			}
     }
 }
 
 @media only screen and (max-width: $snap--tablet) {
     header {
-		width: 100%;
-		
-		&.scrolled{
 			width: 100%;
-		}
+
+			.about{
+				height: auto;
+			}
+			
+			&.scrolled{
+				width: 100%;
+			}
+
+			.about__contact{
+				h4{
+					margin-top: 20px;
+				}
+			}
     }
 }
 
